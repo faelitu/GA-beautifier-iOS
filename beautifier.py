@@ -130,6 +130,9 @@ for hit in input:
                 hit_obj.update({key_ga: value})
         else:
             chars = [char for char in key_ga]
+            for i in range(0, len(chars)):
+                if i < len(chars)-1 and chars[i].isnumeric() and chars[i+1].isnumeric():
+                    chars[i] = chars[i] + chars.pop(i+1)
             numbers = [number for number in chars if number.isnumeric()]
             nums_dict = [str(num) for num in range(0, len(numbers))]
             chars_dict = []
