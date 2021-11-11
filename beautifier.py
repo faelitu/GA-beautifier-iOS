@@ -116,11 +116,12 @@ params_dict = {
 
 batch = []
 for hit in input:
-    hit = urllib.parse.unquote(hit)
     hit = hit.replace('%@\n', '')
     pars = hit.split('&')
     hit_obj = {}
     for par in pars:
+        par = urllib.parse.unquote(par)
+        if len(par.split('=')) < 2: par = par + 'None'
         [key_ga, value] = par.split('=')
         if not bool(re.search(r'\d', key_ga)):
             key_readable = params_dict.get(key_ga)
