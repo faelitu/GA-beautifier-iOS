@@ -121,6 +121,7 @@ for hit in input:
     hit_obj = {}
     for par in pars:
         par = urllib.parse.unquote(par)
+        if '=' not in par: par = par + '='
         if len(par.split('=')) < 2: par = par + 'None'
         [key_ga, value] = par.split('=')
         if not bool(re.search(r'\d', key_ga)):
