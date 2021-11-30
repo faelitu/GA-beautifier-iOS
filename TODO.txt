@@ -1,0 +1,1 @@
+Corrigir bug que deixa pr1cd11 = Product 11 Custom Dimension 11
