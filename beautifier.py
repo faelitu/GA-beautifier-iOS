@@ -148,7 +148,10 @@ for hit in input:
             key_dict = ''.join(chars_dict)
             key_readable = params_dict.get(key_dict)
             for i in range(0, len(numbers)):
-                key_readable = key_readable.replace(nums_dict[i], numbers[i])
+                if key_readable:
+                    key_readable = key_readable.replace(nums_dict[i], numbers[i])
+                else:
+                    key_readable = key_dict.replace(nums_dict[i], numbers[i])
             hit_obj.update({key_readable: value})
 
             
