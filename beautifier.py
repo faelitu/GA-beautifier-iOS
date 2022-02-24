@@ -114,6 +114,13 @@ params_dict = {
     'cm0':          'Custom Metric 0'
 }
 
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
 batch = []
 for hit in input:
     hit = hit.replace('%@\n', '')
@@ -124,6 +131,8 @@ for hit in input:
         if '=' not in par: par = par + '='
         if len(par.split('=')) < 2: par = par + 'None'
         [key_ga, value] = par.split('=')
+        if value.isnumeric(): value = int(value)
+        if isfloat(value): value = float(value)
         if not bool(re.search(r'\d', key_ga)):
             key_readable = params_dict.get(key_ga)
             if key_readable != None:
